@@ -1,9 +1,6 @@
 import React from "react";
-import PlayIcon from "../icons/PlayIcon";
 
 function SongCard() {
-  const isEpisodes = false;
-
   return (
     <div className="min-h-[250px] transition-all bg-[#181818] hover:bg-[#242424]  p-4 rounded-[6px] cursor-pointer">
       {/* card header */}
@@ -16,25 +13,13 @@ function SongCard() {
             className="w-full h-full rounded  aspect-square object-cover"
           />
         </div>
-        {/* card play icon */}
-        {!isEpisodes && (
-          <div className="absolute right-2 bottom-2 w-[48px] h-[48px]">
-            <button className="relative h-full w-full transition-all hover:scale-105 flex justify-center items-center rounded-full bg-green shadow-xl">
-              <span>
-                <PlayIcon />
-              </span>
-            </button>
-          </div>
-        )}
       </div>
       {/* card content */}
       <div>
-        {/* card title */}
         <a href="" className="block pb-1">
           Pathaan
         </a>
-        {/* card artists */}
-        <div className="text-gray">
+        <div className=" text-gray">
           <a href="" className="text-sm leading-5">
             {" "}
             Arjit Singh
@@ -50,16 +35,6 @@ function SongCard() {
             Mukesh Singh
           </a>
         </div>
-        {/* episodes info */}
-        {isEpisodes && (
-          <div className="text-[12px] text-gray font-sans-light">
-            <span className="block pt-2">
-              {"Jan 24"}
-              {"  ·"}
-              {" 22 min"}
-            </span>
-          </div>
-        )}
       </div>
     </div>
   );

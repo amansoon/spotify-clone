@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeartBigIcon = () => {
+function HeartBigIcon() {
   return (
     <div>
       <svg

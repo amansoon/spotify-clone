@@ -34,3 +34,67 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+
+
+
+.rc-slider {
+  width: 100%;
+  height: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+/* slider rail */
+.rc-slider-rail {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  height: 4px;
+  background-color: rgb(73, 73, 73);
+  border-radius: 6px;
+}
+
+
+/* slider track */
+.rc-slider-track {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+}
+/* .rc-slider */
+.rc-slider:hover .rc-slider-track {
+  background-color: green;
+}
+
+.rc-slider:is( > .rc-slider-handle-dragging) .rc-slider-track {
+  background-color: green;
+}
+
+
+
+/* slider handle */
+.rc-slider-handle {
+  position: absolute;
+  z-index: 15;
+  height: 14px;
+  width: 14px;
+  border-radius: 99em;
+  background-color: rgb(255, 255, 255);
+  opacity: 0;
+}
+
+.rc-slider-handle-dragging {
+  opacity: 1;
+}
+
+.rc-slider:hover .rc-slider-handle{
+  opacity: 1;
+}
+
+

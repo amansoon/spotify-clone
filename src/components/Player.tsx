@@ -1,15 +1,34 @@
 import React from "react";
-import HeartBigIcon from "../icons/HeartBigIcon";
+import HeartBigIcon from "../icons/HeartBigFillIcon";
 import HeartBigFillIcon from "../icons/HeartBigFillIcon";
+import PictureInPIctureIcon from "../icons/PictureInPIctureIcon";
 
+import MicIcon from "../icons/MicIcon";
+import QueueIcon from "../icons/QueueIcon";
+import DevicesIcon from "../icons/DevicesIcon";
+
+import VoiceHighIcon from "../icons/VoiceHighIcon";
+import VoiceLowIcon from "../icons/VoiceLowIcon";
+import VoiceMediumIcon from "../icons/VoiceMediumIcon";
+import VoiceMuteIcon from "../icons/VoiceMuteIcon";
+
+import Slider from "rc-slider";
+// import "rc-slider/assets/index.css";
+import type { SliderProps } from "rc-slider";
+import PlaySmallIcon from "../icons/PlaySmallIcon";
+import PlayNextIcon from "../icons/PlayNextIcon";
+import PlayPreviousIcon from "../icons/PlayPreviousIcon";
+import SuffleIcon from "../icons/SuffleIcon";
+import RepeatIcon from "../icons/RepeatIcon";
+import RepeatOneIcon from "../icons/RepeatOneIcon";
 
 type Props = {};
 
 function Player({}: Props) {
   return (
-    <div className="fixed z-50 bottom-0 left-0 right-0 h-[90px] px-4 flex items-center bg-black-2 border border-black-3">
+    <div className="col-start-1 col-end-3 row-start-2 row-end-3 h-[90px] px-4 flex items-center bg-black-2 border border-black-3">
       <Left />
-      <div className="w-[40%] min-w-[180px]"></div>
+      <PlayerControls />
       <Right />
     </div>
   );
@@ -31,16 +50,21 @@ const Left = () => {
         {/* title & singer */}
         <div className="flex flex-col mx-4">
           <div className="text-sm">
-            <a href="">Aasan Nahin Yahen (From "Aashiqui 2")</a>
+            <a href="">Aasan Nahin Yahen </a>
           </div>
           <div className="text-[11px] text-gray">
             <a href=""> Arjit Singh </a>
           </div>
         </div>
 
-        {/* actions */}
+        {/* like */}
         <button className="w-[32px] h-[32px] flex justify-center items-center">
           <HeartBigIcon />
+        </button>
+
+        {/* mini player */}
+        <button className="w-[32px] h-[32px] flex justify-center items-center">
+          <PictureInPIctureIcon />
         </button>
       </div>
     </div>
@@ -50,7 +74,68 @@ const Left = () => {
 const Right = () => {
   return (
     <div className="w-[30%] min-w-[180px]">
-      <div className="flex"></div>
+      <div className="w-full flex justify-end">
+        <button className="w-[32px] h-[32px] flex justify-center items-center">
+          <MicIcon />
+        </button>
+        <button className="w-[32px] h-[32px] flex justify-center items-center">
+          <QueueIcon />
+        </button>
+        <button className="w-[32px] h-[32px] flex justify-center items-center">
+          <DevicesIcon />
+        </button>
+        <button className="w-[32px] h-[32px] flex justify-center items-center">
+          <VoiceHighIcon />
+        </button>
+
+        {/* voice slider */}
+        <div className="w-[200px] flex items-center pl-2 py-2">
+          <Slider min={0} max={100} />
+          {/* <Range /> */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const PlayerControls = () => {
+  return (
+    <div className="w-[40%] ">
+      <div className="">
+        {/* controls */}
+        <div className="flex items-center mb-2 gap-4">
+          <div className="flex justify-end gap-2 grow">
+            <button className="w-[32px] h-[32px] flex justify-center items-center">
+              <SuffleIcon />
+            </button>
+            <button className="w-[32px] h-[32px] flex justify-center items-center">
+              <PlayPreviousIcon />
+            </button>
+          </div>
+          <div>
+            <button className="w-[32px] h-[32px] flex justify-center items-center bg-white rounded-full">
+              <PlaySmallIcon />
+            </button>
+          </div>
+          <div className="flex justify-start gap-2 grow">
+            <button className="w-[32px] h-[32px] flex justify-center items-center">
+              <PlayNextIcon />
+            </button>
+            <button className="w-[32px] h-[32px] flex justify-center items-center">
+              <RepeatIcon />
+            </button>
+          </div>
+        </div>
+
+        {/* track */}
+        <div className="flex items-center gap-2">
+          <div className="min-w-[40px] flex justify-end  text-[11px] text-gray font-sans-light leading-none"> {3.26} </div>
+          <div className="flex items-center grow">
+            <Slider min={0} max={100} />
+          </div>
+          <div className="min-w-[40px] flex justify-start  text-[11px] text-gray font-sans-light"> {3.26} </div>
+        </div>
+      </div>
     </div>
   );
 };
