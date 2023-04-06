@@ -9,7 +9,7 @@ type Props = {
 
 function Page({ children }: Props) {
   return (
-    <div className="grid grid-cols-[400px 1fr] grid-rows-[1fr auto] h-[100vh]">
+    <div className="grid grid-cols-[300px_1fr] grid-rows-[1fr_auto] h-[100vh]">
       <Sidebar />
       <Player />
       <Main> {children} </Main>

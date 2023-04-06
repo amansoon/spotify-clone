@@ -7,12 +7,13 @@ import PlayIcon from "../icons/PlayIcon";
 import Header from "../components/Header";
 import HomeHeader from "../components/HomeHeader";
 import SearchHeader from "../components/SearchHeader";
+import CollectionHeader from "../components/CollectionHeader";
 
 function Home() {
   return (
     <Page>
 
-      <SearchHeader />
+      <CollectionHeader />
 
       <div className="flex flex-col gap-6 pt-8 px-4 lg:px-8">
         {/* wish section */}

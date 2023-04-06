@@ -31,7 +31,7 @@ function Sidebar({}: Props) {
   ];
 
   return (
-    <div className="col-start-1 col-end-2 row-start-1 row-end-2 w-[300px] h-full bg-black">
+    <div className="col-start-1 col-end-2 row-start-1 row-end-2 h-full bg-black">
       <div className="pt-6">
         <div className="w-full">
           <a href="/" className="block px-6 mb-6">

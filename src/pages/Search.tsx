@@ -1,8 +1,17 @@
 import React from 'react'
+import Page from './Page'
+import SearchHeader from '../components/SearchHeader'
+import CategoryList from '../components/GenreList'
 
 function Search() {
   return (
-    <div>Search</div>
+    <Page>
+      <SearchHeader />
+      <CategoryList />
+      
+      
+
+    </Page>
   )
 }
 
