@@ -6,6 +6,7 @@ import userReducer from "../features/user/userSlice";
 import libraryReducer from "../features/library/librarySlice";
 
 import { playlistApi } from "../services/playlist";
+import { userApi } from "../services/user";
 
 export const store = configureStore({
   reducer: {
@@ -14,10 +15,13 @@ export const store = configureStore({
     library: libraryReducer,
     // Add the generated reducer as a specific top-level slice
     [playlistApi.reducerPath]: playlistApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(playlistApi.middleware),
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat([playlistApi.middleware, userApi.middleware])
+  }
 });
 
 // optional, but required for refetchOnFocus/refetchOnReconnect behaviors

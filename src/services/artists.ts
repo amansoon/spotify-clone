@@ -8,13 +8,13 @@ const authHeader = {
 };
 
 // Define a service using a base URL and expected endpoints
-export const playlistApi = createApi({
-  reducerPath: "playlistApi",
+export const userApi = createApi({
+  reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.spotify.com/v1" }),
   endpoints: (builder) => ({
-    getAllPlaylist: builder.query({
-      query: (name) => ({
-        url: `/me/playlists`,
+    getProfile: builder.query({
+      query: () => ({
+        url: `/me`,
         method: "GET",
         headers: {
           Authorization: "Bearer " + accessToken,
@@ -22,31 +22,39 @@ export const playlistApi = createApi({
       }),
     }),
 
-    createPlaylist: builder.mutation({
-      query: (name) => `pokemon/${name}`,
-    }),
-
-    changePlaylistDetails: builder.query({
-      query: ({ name, cover }) => ({
-        url: `post/`,
-        method: "PATCH",
+    getTopArtists: builder.query({
+      query: () => ({
+        url: `/me/artists`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
       }),
     }),
 
-    getPlaylist: builder.query({
-      query: (name) => `pokemon/${name}`,
+    getTopTracks: builder.query({
+      query: () => ({
+        url: `/me/tracks`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      }),
     }),
 
-    addItemToPlaylist: builder.query({
-      query: (name) => `pokemon/${name}`,
+    getFollowedArtists: builder.query({
+      query: () => ({
+        url: `/me/following`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      }),
     }),
 
-    removeItemFromPlaylist: builder.query({
-      query: (name) => `pokemon/${name}`,
-    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAllPlaylistQuery } = playlistApi;
+export const { useGetProfileQuery, useGetTopArtistsQuery, useLazyGetTopTracksQuery, useGetFollowedArtistsQuery } = userApi;
