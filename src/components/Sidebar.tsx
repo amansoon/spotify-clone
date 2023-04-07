@@ -12,6 +12,8 @@ import SearchIcon from "../icons/SearchIcon";
 import SearchFillIcon from "../icons/SearchFillIcon";
 import LibraryFillIcon from "../icons/LibraryFillIcon";
 
+import { NavLink } from "react-router-dom";
+
 type Props = {};
 
 function Sidebar({}: Props) {
@@ -41,16 +43,16 @@ function Sidebar({}: Props) {
 
         <div className="flex flex-col p">
           <ul>
-            <SidebarItemPrimary icon={<HomeFillIcon />} text={"Home"} />
-            <SidebarItemPrimary icon={<SearchFillIcon />} text={"Search"} />
-            <SidebarItemPrimary icon={<LibraryIcon />} text={"Your Library"} />
+            <SidebarItemPrimary icon={<HomeFillIcon />} text={"Home"} url={"/"} />
+            <SidebarItemPrimary icon={<SearchFillIcon />} text={"Search"} url={"/search"} />
+            <SidebarItemPrimary icon={<LibraryIcon />} text={"Your Library"} url={"/collection/playlists"} />
           </ul>
         </div>
 
         <div className="flex flex-col mt-6">
-          <SidebarItem icon={<Plus />} text={"Create Playlist"} />
-          <SidebarItem icon={<Like />} text={"Liked Songs"} />
-          <SidebarItem icon={<Bookmark />} text={"Your Episodes"} />
+          <SidebarItem icon={<Plus />} text={"Create Playlist"} url={"/"} />
+          <SidebarItem icon={<Like />} text={"Liked Songs"} url={"/"} />
+          <SidebarItem icon={<Bookmark />} text={"Your Episodes"} url={"/"} />
         </div>
 
         <div className="px-6 py-2 mt-2">
@@ -62,7 +64,10 @@ function Sidebar({}: Props) {
             {myplaylists.map(({ id, text }) => {
               return (
                 <li className="px-6">
-                  <a href="" className="block py-1 text-gray text-sm">  {text} </a>
+                  <a href="" className="block py-1 text-gray text-sm">
+                    {" "}
+                    {text}{" "}
+                  </a>
                 </li>
               );
             })}
@@ -76,15 +81,16 @@ function Sidebar({}: Props) {
 type SidebarItemProps = {
   icon: React.ReactNode;
   text: string;
+  url: string;
 };
 
-const SidebarItemPrimary = ({ icon, text }: SidebarItemProps) => {
+const SidebarItemPrimary = ({ icon, text, url }: SidebarItemProps) => {
   return (
     <li className="w-full px-2">
-      <button className="w-full h-[40px] flex items-center gap-4 px-4 font-bold text-gray text-sm">
+      <NavLink to={url} className="w-full h-[40px] flex items-center gap-4 px-4 font-bold text-gray text-sm">
         <div>{icon}</div>
         <span> {text} </span>
-      </button>
+      </NavLink>
     </li>
   );
 };

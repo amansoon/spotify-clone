@@ -1,13 +1,13 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const accessToken =
-  "BQB8FL7mGIUGVlerTMKie1c1fYR7-NNF2FCkVclcMIAwAxKZ1OpBin0P63fCDo0-TTbCuZdLrNeDbtFKwNi5R_PYg0W4ndozcPWulkiqR7PnL7zAQQjfSnx4VcsQIIX1QeCkT3pawqhcksI3CtE8ufE5DcisBSf-Iuk6Is7KKlGSlZQL5-CqJNh8VX-rtoaexvfs8lAAh-Yl80_JZpEW_ix3NCtShsQTKFHmGCOrsmUMtrVhdRwliAzaJQn4Lca6io7J1H6e8MnH1s0ueand1lQDGRRtzJSntm7CHmTJ5UfUw-KFfUMnZlSWk9hiq2f8hmXEbwkotX5Ek1QqcEuwLQ";
+const accessToken = "BQAFs_uwNBpK3UY7UP9zsXS3nU82Ll9pZb-vDAX7wk1Kg91yj4TLigZTz5bhVuT9uvayR54U6MM6S5t1MPTE94EXInRRIlnejauiLDKVl69ZVMT_ys6YSfTSUM-EyUrqgbO-POinT8IdFfNf5k7pTBfs0UPOxWbrUJsroDQLxX95VUbLRgJck2gkrOg2YGlkQB-PtIxqo35wqgHYLrdtx65WoQ4Kmeh6dKXP5PLEgwx6GTQHFkeA1Z5SneE9RVZkcJQMMbw_suww7nk5qiTeBVw6shDI1DJGbepUvBjuaACOEdj6hEMa8gW3IURlf6GH98ZaG6EByXgNmcb3mXkc-w"
 
 const headers = {
   Authorization: `Bearer ${accessToken}`,
-  'Content-Type': 'application/json',
+  "Content-Type": "application/json",
 };
+
 
 // Define a service using a base URL and expected endpoints
 export const userApi = createApi({
@@ -18,7 +18,7 @@ export const userApi = createApi({
       query: () => ({
         url: `/me`,
         method: "GET",
-        headers: headers
+        headers: headers,
       }),
     }),
 
@@ -26,7 +26,7 @@ export const userApi = createApi({
       query: () => ({
         url: `/me/top/artists`,
         method: "GET",
-        headers: headers
+        headers: headers,
       }),
     }),
 
@@ -34,7 +34,7 @@ export const userApi = createApi({
       query: () => ({
         url: `/me/top/tracks`,
         method: "GET",
-        headers: headers
+        headers: headers,
       }),
     }),
 
@@ -42,7 +42,15 @@ export const userApi = createApi({
       query: () => ({
         url: `/me/following?type=artist`,
         method: "GET",
-        headers: headers
+        headers: headers,
+      }),
+    }),
+
+    getGenres: builder.query({
+      query: () => ({
+        url: `/recommendations/available-genre-seeds`,
+        method: "GET",
+        headers: headers,
       }),
     }),
 
@@ -51,4 +59,4 @@ export const userApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetProfileQuery, useGetTopArtistsQuery, useGetTopTracksQuery, useGetFollowedArtistsQuery } = userApi;
+export const { useGetProfileQuery, useGetTopArtistsQuery, useGetTopTracksQuery, useGetFollowedArtistsQuery, useGetGenresQuery } = userApi;

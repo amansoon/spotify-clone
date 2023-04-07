@@ -1,13 +1,9 @@
 import React from "react";
 import Page from "./Page";
 import SongCard from "../components/SongCard";
-import Footer from "../components/Footer";
-import Main from "../components/Main";
 import PlayIcon from "../icons/PlayIcon";
-import Header from "../components/Header";
-import HomeHeader from "../components/HomeHeader";
-import SearchHeader from "../components/SearchHeader";
 import CollectionHeader from "../components/CollectionHeader";
+import ArtistCard from "../components/ArtistCard";
 
 function Home() {
   return (
@@ -101,7 +97,7 @@ const Section = ({ title }: { title: string }) => {
 
       {/* section content */}
       <div className="grid grid-cols-5 gap-6">
-        <SongCard />
+        <ArtistCard />
         <SongCard />
         <SongCard />
         <SongCard />

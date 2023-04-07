@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Header from "./Header";
-import { useLocation, useNavigation } from "react-router-dom";
+import { Link, useLocation, useNavigation } from "react-router-dom";
 
 
 type Props = {};
@@ -53,17 +53,21 @@ const NavItem = ({ id, name, url }: NavItemProps) => {
   const [isActive, setActive] = useState<boolean>(false)
 
   useEffect(() => {
+    console.log(location)
      if(location.pathname === url) {
         setActive(true)
      }
-  }, [location])
+     else {
+        setActive(false)
+     }
+  }, [location.pathname])
   
 
   return (
     <li>
-      <a href={url} className={"block mr-2 px-4 py-2 rounded hover:bg-black " + (isActive ? "bg-black-1" : "bg-transparent")}>
+      <Link to={url} className={"block mr-2 px-4 py-2 rounded hover:bg-black " + (isActive ? "bg-black-1" : "bg-transparent")}>
         <span className="text-sm leading-6"> {name} </span>
-      </a>
+      </Link>
     </li>
   );
 };
