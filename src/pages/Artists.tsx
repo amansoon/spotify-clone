@@ -23,12 +23,12 @@ const List = () => {
       </div>
       {/* list content */}
       <div className="grid grid-cols-5 gap-6">
-        <Card type={CardType.Artist} data={{ name: "Arjit Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Jubin Nautiyal" }} />
-        <Card type={CardType.Artist} data={{ name: "Lata Mangeskar" }} />
-        <Card type={CardType.Artist} data={{ name: "Pritam Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Dhanvi Bhanushali" }} />
-        <Card type={CardType.Artist} data={{ name: "Arjit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arjit Singh", user: "Artist" }} />
+        <Card type={CardType.Artist} data={{ name: "Jubin Nautiyal", user: "Artist" }} />
+        <Card type={CardType.Artist} data={{ name: "Lata Mangeskar", user: "Artist" }} />
+        <Card type={CardType.Artist} data={{ name: "Pritam Singh", user: "Artist" }} />
+        <Card type={CardType.Artist} data={{ name: "Dhanvi Bhanushali", user: "Artist" }} />
+        <Card type={CardType.Artist} data={{ name: "Arjit Singh", user: "Artist" }} />
       </div>
     </div>
   );

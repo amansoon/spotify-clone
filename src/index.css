@@ -4,22 +4,22 @@
 
 @font-face {
   font-family: "spotify-black";
-  src: url(/public/fonts/spotify-circular/CircularStd-Black.otf);
+  src: url(/public/fonts/Circular/CircularStd-Black.otf);
 }
 
 @font-face {
   font-family: "spotify-bold";
-  src: url(/public/fonts/spotify-circular/CircularStd-Bold.otf);
+  src: url(/public/fonts/Circular/CircularStd-Bold.otf);
 }
 
 @font-face {
   font-family: "spotify";
-  src: url(/public/fonts/spotify-circular/CircularStd-Medium.otf);
+  src: url(/public/fonts/Circular/CircularStd-Medium.otf);
 }
 
 @font-face {
   font-family: "spotify-light";
-  src: url(/public/fonts/spotify-circular/CircularStd-Light.otf);
+  src: url(/public/fonts/Circular/CircularStd-Light.otf);
 }
 
 body {

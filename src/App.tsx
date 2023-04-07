@@ -16,6 +16,7 @@ import Playlists from "./pages/Playlists";
 import Artists from "./pages/Artists";
 import Albums from "./pages/Albums";
 import Podcasts from "./pages/Podcasts";
+import Episodes from "./pages/Episodes";
 
 // import { useGetAllPlaylistQuery } from "./services/playlist";
 // import {
@@ -87,6 +88,7 @@ function App() {
             <Route path="artists" element={<Artists />} />
             <Route path="albums" element={<Albums />} />
             <Route path="podcasts" element={<Podcasts />} />
+            <Route path="episodes" element={<Episodes />} />
           </Route>
         </Routes>
       </BrowserRouter>

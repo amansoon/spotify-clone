@@ -3,6 +3,7 @@ import Page from "./Page";
 import CollectionHeader from "../components/CollectionHeader";
 import Card from "../components/Card";
 import { CardType } from "../types";
+import BigCard from "../components/BigCard";
 type Props = {};
 
 function Podcasts({}: Props) {
@@ -23,12 +24,12 @@ const List = () => {
       </div>
       {/* list content */}
       <div className="grid grid-cols-5 gap-6">
-        <Card type={CardType.Artist} data={{ name: "Arjit Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Jubin Nautiyal" }} />
-        <Card type={CardType.Artist} data={{ name: "Lata Mangeskar" }} />
-        <Card type={CardType.Artist} data={{ name: "Pritam Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Dhanvi Bhanushali" }} />
-        <Card type={CardType.Artist} data={{ name: "Arjit Singh" }} />
+        <BigCard type="episode" count={3} />
+        <Card type={CardType.Podcast} data={{ name: "Sandeep Maheshwari", publisher: 'Audible' }} />
+        <Card type={CardType.Podcast} data={{ name: "Neend - Bedtime stories", publisher: 'Neend' }} />
+        <Card type={CardType.Podcast} data={{ name: "The Ranveer Show", publisher: 'BeerBiceps aka Ranveer Allahbadia' }} />
+        <Card type={CardType.Podcast} data={{ name: "Maha Bharat with Dhruv Rathee", publisher: 'Spotify Studio' }} />
+        <Card type={CardType.Podcast} data={{ name: "Dhruv Rathee", publisher: 'Dhruv Rathee' }} />
       </div>
     </div>
   );
