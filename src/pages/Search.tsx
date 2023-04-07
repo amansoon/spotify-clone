@@ -8,9 +8,6 @@ function Search() {
     <Page>
       <SearchHeader />
       <CategoryList />
-      
-      
-
     </Page>
   )
 }
