@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PlayIcon from "../icons/PlayIcon";
 import { Link } from "react-router-dom";
 import { CardType } from "../types/index";
@@ -9,6 +9,25 @@ type Props = {
 };
 
 function Card({ type, data }: Props) {
+  const [isPlayable, setPlayable] = useState(false);
+  const [isRounded, setRounded] = useState(false);
+
+  useEffect(() => {
+    // playable button
+    if ([CardType.Artist, CardType.Album, CardType.Playlist].includes(type)) {
+      setPlayable(true);
+    } else {
+      setPlayable(false);
+    }
+
+    // rounded photo
+    if ([CardType.Artist, CardType.Profile].includes(type)) {
+      setRounded(true);
+    } else {
+      setRounded(false);
+    }
+  }, []);
+
   return (
     <div className="group min-h-[250px] transition-all bg-[#181818] hover:bg-[#242424]  p-4 rounded-[6px] cursor-pointer">
       {/* card header */}
@@ -16,7 +35,7 @@ function Card({ type, data }: Props) {
         {/* card image  */}
         <div
           className={`w-full aspect-square ${
-            type === CardType.Artist ? "rounded-full" : "rounded"
+            isRounded ? "rounded-full" : "rounded"
           } overflow-hidden bg-black-2 shadow-md`}
         >
           <img
@@ -26,7 +45,7 @@ function Card({ type, data }: Props) {
           />
         </div>
         {/* card play icon */}
-        {(type === CardType.Artist || type === CardType.Album)  && (
+        {isPlayable && (
           <div className="absolute right-2 bottom-0 opacity-0 group-hover:bottom-2 group-hover:opacity-100 transition-all w-[48px] h-[48px]">
             <button className="relative h-full w-full transition-all hover:scale-105 flex justify-center items-center rounded-full bg-green shadow-xl">
               <span>
@@ -40,7 +59,8 @@ function Card({ type, data }: Props) {
       <div className="min-h-[62px]">
         <CardTitle text={data.name} url="" />
         {type === CardType.Artist ? <ArtistDesc user={data.user} /> : null}
-        {type === CardType.Playlist ? <PlaylistDesc owner={data.owner} /> : null}
+        {type === CardType.Profile ? <ProfileDesc user={data.user} /> : null}
+        {type === CardType.Playlist && data.owner ? <PlaylistDesc owner={data.owner} /> : null}
         {type === CardType.Album ? <AlbumDesc artists={data.artists} /> : null}
         {type === CardType.Podcast ? <PodcastDesc publisher={data.publisher} /> : null}
 
@@ -84,7 +104,16 @@ const CardDesc = ({ text, url }: DescProps) => {
 const ArtistDesc = ({ user }: { user: string }) => {
   return (
     <div className="text-gray">
-      <span className="text-sm">{user}</span>
+      <span className="text-sm"> Artist </span>
+    </div>
+  );
+};
+
+// Artist desc
+const ProfileDesc = ({ user }: { user: string }) => {
+  return (
+    <div className="text-gray">
+      <span className="text-sm"> Profile </span>
     </div>
   );
 };
@@ -93,7 +122,7 @@ const ArtistDesc = ({ user }: { user: string }) => {
 const PlaylistDesc = ({ owner }: { owner: string }) => {
   return (
     <div className="text-gray">
-      <span className="text-sm">By {owner}</span>
+      <span className="text-sm"> By {owner} </span>
     </div>
   );
 };
@@ -114,7 +143,6 @@ const AlbumDesc = ({ artists }: { artists: object[] }) => {
   );
 };
 
-
 // Album desc
 const PodcastDesc = ({ publisher }: { publisher: string }) => {
   return (
@@ -123,7 +151,6 @@ const PodcastDesc = ({ publisher }: { publisher: string }) => {
     </div>
   );
 };
-
 
 // card date
 type CardDateProps = {
