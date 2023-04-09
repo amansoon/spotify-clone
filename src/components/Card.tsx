@@ -14,7 +14,7 @@ function Card({ type, data }: Props) {
 
   useEffect(() => {
     // playable button
-    if ([CardType.Artist, CardType.Album, CardType.Playlist].includes(type)) {
+    if ([CardType.Artist, CardType.Album, CardType.Playlist, CardType.Discography].includes(type)) {
       setPlayable(true);
     } else {
       setPlayable(false);
@@ -63,6 +63,7 @@ function Card({ type, data }: Props) {
         {type === CardType.Playlist && data.owner ? <PlaylistDesc owner={data.owner} /> : null}
         {type === CardType.Album ? <AlbumDesc artists={data.artists} /> : null}
         {type === CardType.Podcast ? <PodcastDesc publisher={data.publisher} /> : null}
+        {type === CardType.Discography ? <DiscographyDesc time={data.time} text={data.text} /> : null}
 
         {type === CardType.Episode && <CardDate date="Jan 23" duration="18 Min" />}
       </div>
@@ -151,6 +152,19 @@ const PodcastDesc = ({ publisher }: { publisher: string }) => {
     </div>
   );
 };
+
+
+// Album desc
+const DiscographyDesc = ({ time, text }: { publisher: string }) => {
+  return (
+    <div className="flex items-center gap-1 text-gray line-clamp-2">
+      <span className="text-sm"> {time} </span>
+      <span> • </span>
+      <span className="text-sm"> {text} </span>
+    </div>
+  );
+};
+
 
 // card date
 type CardDateProps = {

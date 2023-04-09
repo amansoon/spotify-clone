@@ -13,6 +13,8 @@ import TrackMoreIcon from "../icons/TrackMoreIcon";
 import TrackPlayIcon from "../icons/TrackPlayIcon";
 import TrackPauseIcon from "../icons/TrackPauseIcon";
 import AudioWaveIcon from "../icons/AudioWaveIcon";
+import Card from "../components/Card";
+import { CardType } from "../types";
 
 type Props = {};
 
@@ -22,20 +24,20 @@ function Artist({}: Props) {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyCWeMjqZHmfYahbKWqCG4i2B5RoCWv1fWYWPrke8gjza4kfUCOFBp3t7gMf2-6GJNaR0&usqp=CAU";
   const format = "rgbString";
   const { data, loading, error } = useColor(src, format, { crossOrigin: "cross-origin" });
-  const [gradient, setGradient] = useState<object | null>(null)
+  const [gradient, setGradient] = useState<object | null>(null);
 
   let bgNoise =
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=";
 
   useEffect(() => {
     if (data) {
-      setGradient({ background: `linear-gradient(to bottom, ${data} 20%, black`})
+      setGradient({ background: `linear-gradient(to bottom, ${data} 20%, #121212` });
     }
   }, [data]);
-  
+
   useEffect(() => {
     console.log("gradient = ", gradient);
-  }, [gradient])
+  }, [gradient]);
 
   return (
     <Page>
@@ -50,9 +52,7 @@ function Artist({}: Props) {
       <Profile />
 
       <section className="relative isolate bg-black-1">
-        {gradient ? (
-          <div className="absolute -z-10 w-full h-[232px]" style={gradient} />
-        ) : null}
+        {gradient ? <div className="absolute -z-10 w-full h-[232px]" style={gradient} /> : null}
         {/* ------ */}
         <div className="px-[32px] py-[24px]">
           <div className="flex items-center">
@@ -69,13 +69,28 @@ function Artist({}: Props) {
             </button>
           </div>
         </div>
-        {/* -------- popular song (Track) -------- */}
-        <div className="px-[32px]">
-          <Track index={1} />
-          <Track index={2} />
-          <Track index={3} />
-          <Track index={4} />
-          <Track index={5} />
+        {/* content */}
+        <div className="px-[32px] ">
+          {/* -------- popular song (Track) -------- */}
+          <section className="mb-[40px]">
+            <h2 className="text-2xl leading-loose"> Popular </h2>
+            <div>
+              <Track index={1} />
+              <Track index={2} />
+              <Track index={3} />
+              <Track index={4} />
+              <Track index={5} />
+            </div>
+            <div>
+              <button className="p-4 text-sm opacity-80 hover:opacity-100"> See more </button>
+            </div>
+          </section>
+
+          {/* -------- Discography -------- */}
+          <Discography />
+          <Featuring />
+          <FansAlsoLike />
+          <AppearsOn />
         </div>
       </section>
     </Page>
@@ -115,7 +130,7 @@ const Track = ({ index }: { index: number }) => {
   return (
     <div className="group">
       <div
-        className="px-4 h-[56px] grid grid-cols-[16px_4fr_2fr_minmax(120px,_1fr)] gap-4 rounded hover:bg-black-2"
+        className="px-4 h-[56px] grid grid-cols-[16px_4fr_2fr_minmax(120px,_1fr)] gap-4 rounded hover:bg-gray/20"
         onDoubleClick={() => setPlaying(!isPlaying)}
       >
         <div className="flex items-center">
@@ -150,21 +165,10 @@ const Track = ({ index }: { index: number }) => {
           />
           <div className="grid grid-flow-row">
             <div> City Slump </div>
-            <span className="text-sm text-gray">
-              <Link to={""} className="hover:underline">
-                Raja Kumari
-              </Link>
-              {", "}
-              <Link to={""} className="hover:underline">
-                DIVINE
-              </Link>
-            </span>
           </div>
         </div>
         <div className="flex items-center shrink-0">
-          <Link to={""} className="text-sm text-gray line-clamp-1 hover:underline">
-            O Bedardeya (From "Tu Jhoothi Main Makkaar")
-          </Link>
+          <span>381,365</span>
         </div>
         <div className="flex items-center justify-self-end">
           <button className="opacity-0 group-hover:opacity-100 mr-4">
@@ -179,6 +183,116 @@ const Track = ({ index }: { index: number }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+const Discography = () => {
+  return (
+    <section className="mb-[40px]">
+      {/* heading */}
+      <div className="flex items-center mb-4">
+        <h2 className="text-2xl leading-loose grow">
+          <Link to={""} className="hover:underline">
+            Discography
+          </Link>
+        </h2>
+        <Link to={""}>
+          <span className="text-sm ml-2 hover:underline"> Show all </span>
+        </Link>
+      </div>
+      {/* tabs */}
+      <div className="flex mb-4">
+        <button className="text-sm py-2 px-4 bg-black-2/80 rounded-full mb-2 mr-2"> Popular releases </button>
+        <button className="text-sm py-2 px-4 bg-black-2/80 rounded-full mb-2 mr-2"> Albums </button>
+        <button className="text-sm py-2 px-4 bg-black-2/80 rounded-full mb-2 mr-2"> Singles and EPs </button>
+      </div>
+      {/* list */}
+      <div className="grid grid-cols-5 gap-6">
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+      </div>
+    </section>
+  );
+};
+
+const Featuring = () => {
+  return (
+    <section className="mb-[40px]">
+      {/* heading */}
+      <div className="flex items-center mb-4">
+        <h2 className="text-2xl leading-loose grow">
+          <Link to={""} className="hover:underline">
+            Featuring Kaushiki Chakraborty
+          </Link>
+        </h2>
+        <Link to={""}>
+          <span className="text-sm ml-2 hover:underline"> Show all </span>
+        </Link>
+      </div>
+      {/* list */}
+      <div className="grid grid-cols-5 gap-6">
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+        <Card type={CardType.Discography} data={{ name: "Plar Se Pyar Hone", time: "2021", text: "Single" }} />
+      </div>
+    </section>
+  );
+};
+
+const FansAlsoLike = () => {
+  return (
+    <section className="mb-[40px]">
+      {/* heading */}
+      <div className="flex items-center mb-4">
+        <h2 className="text-2xl leading-loose grow">
+          <Link to={""} className="hover:underline">
+            Fans Also Like
+          </Link>
+        </h2>
+        <Link to={""}>
+          <span className="text-sm ml-2 hover:underline"> Show all </span>
+        </Link>
+      </div>
+      {/* list */}
+      <div className="grid grid-cols-5 gap-6">
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+      </div>
+    </section>
+  );
+};
+
+const AppearsOn = () => {
+  return (
+    <section className="mb-[40px]">
+      {/* heading */}
+      <div className="flex items-center mb-4">
+        <h2 className="text-2xl leading-loose grow">
+          <Link to={""} className="hover:underline">
+            Appears On
+          </Link>
+        </h2>
+        <Link to={""}>
+          <span className="text-sm ml-2 hover:underline"> Show all </span>
+        </Link>
+      </div>
+      {/* list */}
+      <div className="grid grid-cols-5 gap-6">
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+      </div>
+    </section>
   );
 };
 
