@@ -149,7 +149,6 @@ const Track = ({ index }: { index: number }) => {
               <>
                 <span className="block group-hover:hidden"> <AudioWaveIcon /> </span>
                 <span className="hidden group-hover:block">
-                  {" "}
                   <TrackPlayIcon />{" "}
                 </span>
               </>
@@ -157,7 +156,6 @@ const Track = ({ index }: { index: number }) => {
               <>
                 <span className="block group-hover:hidden text-gray"> { index + 1 } </span>
                 <span className="hidden group-hover:block">
-                  {" "}
                   <TrackPauseIcon />{" "}
                 </span>
               </>
