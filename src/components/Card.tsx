@@ -14,7 +14,7 @@ function Card({ type, data }: Props) {
 
   useEffect(() => {
     // playable button
-    if ([CardType.Artist, CardType.Album, CardType.Playlist, CardType.Discography].includes(type)) {
+    if ([CardType.Artist, CardType.Album, CardType.Playlist, CardType.Discography, CardType.AppearOn].includes(type)) {
       setPlayable(true);
     } else {
       setPlayable(false);
@@ -61,9 +61,11 @@ function Card({ type, data }: Props) {
         {type === CardType.Artist ? <ArtistDesc user={data.user} /> : null}
         {type === CardType.Profile ? <ProfileDesc user={data.user} /> : null}
         {type === CardType.Playlist && data.owner ? <PlaylistDesc owner={data.owner} /> : null}
+        {type === CardType.Playlist && data.desc ? <PlaylistDesc owner={data.desc} /> : null}
         {type === CardType.Album ? <AlbumDesc artists={data.artists} /> : null}
         {type === CardType.Podcast ? <PodcastDesc publisher={data.publisher} /> : null}
         {type === CardType.Discography ? <DiscographyDesc time={data.time} text={data.text} /> : null}
+        {type === CardType.AppearOn ? <AppearOnDesc time={data.time} text={data.text} /> : null}
 
         {type === CardType.Episode && <CardDate date="Jan 23" duration="18 Min" />}
       </div>
@@ -120,10 +122,10 @@ const ProfileDesc = ({ user }: { user: string }) => {
 };
 
 // Playlist desc
-const PlaylistDesc = ({ owner }: { owner: string }) => {
+const PlaylistDesc = ({ owner, desc }: { owner?: string; desc?: string }) => {
   return (
-    <div className="text-gray">
-      <span className="text-sm"> By {owner} </span>
+    <div className="text-gray line-clamp-2">
+      {owner ? <span className="text-sm"> By {owner} </span> : <span className="text-sm"> {desc} </span>}
     </div>
   );
 };
@@ -153,9 +155,8 @@ const PodcastDesc = ({ publisher }: { publisher: string }) => {
   );
 };
 
-
 // Album desc
-const DiscographyDesc = ({ time, text }: { publisher: string }) => {
+const DiscographyDesc = ({ time, text }: { time: string; text: string }) => {
   return (
     <div className="flex items-center gap-1 text-gray line-clamp-2">
       <span className="text-sm"> {time} </span>
@@ -165,6 +166,16 @@ const DiscographyDesc = ({ time, text }: { publisher: string }) => {
   );
 };
 
+// Album desc
+const AppearOnDesc = ({ time, text }: { time: string; text: string }) => {
+  return (
+    <div className="flex items-center gap-1 text-gray line-clamp-2">
+      <span className="text-sm"> {time} </span>
+      <span> • </span>
+      <span className="text-sm"> {text} </span>
+    </div>
+  );
+};
 
 // card date
 type CardDateProps = {

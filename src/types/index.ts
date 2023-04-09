@@ -7,7 +7,8 @@ enum CardType {
   Artist,
   GenreAndMood,
   Following,
-  Discography
+  Discography,
+  AppearOn,
 }
 
 export {CardType}

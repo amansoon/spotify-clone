@@ -91,6 +91,8 @@ function Artist({}: Props) {
           <Featuring />
           <FansAlsoLike />
           <AppearsOn />
+          <DiscoveredOn />
+          <About />
         </div>
       </section>
     </Page>
@@ -286,11 +288,87 @@ const AppearsOn = () => {
       </div>
       {/* list */}
       <div className="grid grid-cols-5 gap-6">
-        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
-        <Card type={CardType.Artist} data={{ name: "Arijit Singh" }} />
+        <Card type={CardType.AppearOn} data={{ name: "Aashiqui 2", time: "2021", text: "Album" }} />
+        <Card type={CardType.AppearOn} data={{ name: "Aashiqui 2", time: "2021", text: "Album" }} />
+        <Card type={CardType.AppearOn} data={{ name: "Aashiqui 2", time: "2021", text: "Compilation" }} />
+        <Card type={CardType.AppearOn} data={{ name: "Aashiqui 2", time: "2021", text: "Album" }} />
+        <Card type={CardType.AppearOn} data={{ name: "Aashiqui 2", time: "2021", text: "Album" }} />
+      </div>
+    </section>
+  );
+};
+
+const DiscoveredOn = () => {
+  return (
+    <section className="mb-[40px]">
+      {/* heading */}
+      <div className="flex items-center mb-4">
+        <h2 className="text-2xl leading-loose grow">
+          <Link to={""} className="hover:underline">
+            Discovered On
+          </Link>
+        </h2>
+        <Link to={""}>
+          <span className="text-sm ml-2 hover:underline"> Show all </span>
+        </Link>
+      </div>
+      {/* list */}
+      <div className="grid grid-cols-5 gap-6">
+        <Card
+          type={CardType.Playlist}
+          data={{
+            name: "Trending Valantine's Special",
+            desc: "India's Ultimate Love Playlist. Cover- Sidharth Malhotra & Kiara Advan",
+          }}
+        />
+        <Card
+          type={CardType.Playlist}
+          data={{
+            name: "Trending Valantine's Special",
+            desc: "India's Ultimate Love Playlist. Cover- Sidharth Malhotra & Kiara Advan",
+          }}
+        />
+        <Card
+          type={CardType.Playlist}
+          data={{
+            name: "Trending Valantine's Special",
+            desc: "India's Ultimate Love Playlist. Cover- Sidharth Malhotra & Kiara Advan",
+          }}
+        />
+        <Card
+          type={CardType.Playlist}
+          data={{
+            name: "Trending Valantine's Special",
+            desc: "India's Ultimate Love Playlist. Cover- Sidharth Malhotra & Kiara Advan",
+          }}
+        />
+        <Card
+          type={CardType.Playlist}
+          data={{
+            name: "Trending Valantine's Special",
+            desc: "India's Ultimate Love Playlist. Cover- Sidharth Malhotra & Kiara Advan",
+          }}
+        />
+      </div>
+    </section>
+  );
+};
+
+const About = () => {
+  return (
+    <section className="mb-[40px]">
+      {/* heading */}
+      <div className="flex items-center mb-4">
+        <h2 className="text-2xl leading-loose grow">
+            About
+        </h2>
+      </div>
+      <div>
+        <button>
+          <div className="p-[40px]">
+
+          </div>
+        </button>
       </div>
     </section>
   );
