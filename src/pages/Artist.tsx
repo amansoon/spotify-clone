@@ -359,14 +359,41 @@ const About = () => {
     <section className="mb-[40px]">
       {/* heading */}
       <div className="flex items-center mb-4">
-        <h2 className="text-2xl leading-loose grow">
-            About
-        </h2>
+        <h2 className="text-2xl leading-loose grow">About</h2>
       </div>
-      <div>
-        <button>
-          <div className="p-[40px]">
-
+      <div className="">
+        <button className="w-full max-w-[840px] bg-black-2 rounded-lg text-start hover:scale-[101%] transition-all">
+          <div className="max-w-[680px] flex flex-col p-[40px]">
+            {/* image */}
+            <figure className="mb-6">
+              <div className="w-[204px] h-[204px]">
+                <img
+                  src="https://i.scdn.co/image/ab6761610000e5eb52e39259e8bb2a49a687e63d"
+                  alt="artist"
+                  className="rounded-full object-cover"
+                />
+              </div>
+            </figure>
+            {/* views */}
+            <div> {"79,285"} monthly listeners </div>
+            {/* description */}
+            <div className="line-clamp-3 mt-2">
+              Kaushiki began her training under her mother Smt. Chandana Chakraborty. Subsequently, she had the
+              privilege of becoming the “Ganda Bandh” disciple of legendary Guru Pandit Jnan Prakash Ghosh, before
+              becoming a disciple of her father, vocal maestro Pandit Ajoy Chakraborty, under whom she continues to
+              learn. Later, she was also fortunate to get Taalim in Carnatic Classical Music from Padma Vibhushan Pandit
+              M. Balamurali Krishna. Kaushiki has formed an All Women Band named “Sakhi “in 2015 which includes Indian
+              vocal, instrumental, percussion and Kathak dance and brings all these forms together to celebrate the
+              spirit of Womanhood and to pay homage to the famous mythological and historical women of India. She has
+              been recipient of many national and international awards such as the 2005 BBC Radio 3 Awards for World
+              Music in Asia/Pacific category. She has also received Sangeet Natak Academy's Ustad Bismillah Khan
+              Puraskar 2010 for Hindustani Vocal Music, the 2012 GIMA award for her album “Yatra 2” , 2013 Mirchi Music
+              Award for the album “Yatra 2”, 2015 Bobby Sethi Music Award, and the 2013 Aditya Birla Kalakiran Puraskar.
+              She has also received "Shera Bangali Samman 2017" by ABP ANANDA. Recently, she has received "West Bengal
+              Government Sangeet Maha Samman Award 2019" , and Nari Shakti Puraskar 2019 by Ministry of Women &amp;
+              Child Development, Govt. of India. Kaushiki has performed Paris, Germany, Hawaii, Budapest, Scotland,
+              Kenya, Japan, Dubai, Muscat, USA and many more.
+            </div>
           </div>
         </button>
       </div>
