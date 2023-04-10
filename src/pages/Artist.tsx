@@ -363,7 +363,7 @@ const About = () => {
         <h2 className="text-2xl leading-loose grow">About</h2>
       </div>
       <div className="">
-        <button className="relative isolate w-full max-w-[840px] bg-black-2 rounded-lg text-start hover:scale-[100.5%] transition-all">
+        <button className="relative isolate h-[516px] w-full max-w-[840px] flex items-end bg-black-2 rounded-lg text-start hover:scale-[100.5%] transition-all">
           <div className="max-w-[680px] flex flex-col p-[40px]">
             {/* image */}
             <figure className="mb-6">

@@ -14,6 +14,10 @@ function Playlist({}: Props) {
       <div className="-mt-[64px]">
         <PlaylistHeader />
       </div>
+      {/* track container */}
+      <div>
+
+      </div>
     </Page>
   );
 }
@@ -54,9 +58,9 @@ const PlaylistHeader = () => {
         </div>
 
         {/* ------- desc ------- */}
-        <div className="line-clamp-1 text-sm opacity-75">
+        <div className="line-clamp-3 text-sm opacity-75">
           ULTRA SAD PRO MAX.. includes most of the all time bests U can hit ♥️heart (of plastist if not of ur
-          crush😂)and save for later to listen.. ☺
+          crush😂)and save for later to listen.. ☺ this is really good thing about this playlist
         </div>
 
         {/* ------- info -------- */}
