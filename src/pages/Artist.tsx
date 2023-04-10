@@ -42,66 +42,67 @@ function Artist({}: Props) {
   return (
     <Page>
       <ArtistHeader />
-      <div className="absolute -z-10 top-0 left-0 right-0  min-h-[80vh]">
-        <img
-          src="https://wallpapercave.com/wp/wp8950835.jpg"
-          alt="arjit singh image"
-          className="h-full w-full object-cover bg-blue-600 "
-        />
-      </div>
-      <Profile />
-
-      <section className="relative isolate bg-black-1">
-        {gradient ? <div className="absolute -z-10 w-full h-[232px]" style={gradient} /> : null}
-        {/* ------ */}
-        <div className="px-[32px] py-[24px]">
-          <div className="flex items-center">
-            <div className="mr-[32px]">
-              <button className="h-[56px] w-[56px] min-w-[56px] flex justify-center items-center rounded-full bg-green hover:scale-105 transition-all">
-                <span>
-                  <PlayIcon />
-                </span>
+      <div className="relative -mt-[64px]">
+        <div className="absolute -z-10 top-0 left-0 right-0  min-h-[80vh]">
+          <img
+            src="https://wallpapercave.com/wp/wp8950835.jpg"
+            alt="arjit singh image"
+            className="h-full w-full object-cover bg-blue-600 "
+          />
+        </div>
+        <Profile />
+        <section className="relative isolate bg-black-1">
+          {gradient ? <div className="absolute -z-10 w-full h-[232px]" style={gradient} /> : null}
+          {/* ------ */}
+          <div className="px-[32px] py-[24px]">
+            <div className="flex items-center">
+              <div className="mr-[32px]">
+                <button className="h-[56px] w-[56px] min-w-[56px] flex justify-center items-center rounded-full bg-green hover:scale-105 transition-all">
+                  <span>
+                    <PlayIcon />
+                  </span>
+                </button>
+              </div>
+              <button className="text-xs border px-3 py-2 rounded uppercase mr-4">Following</button>
+              <button>
+                <ArtistMoreOptionIcon />
               </button>
             </div>
-            <button className="text-xs border px-3 py-2 rounded uppercase mr-4">Following</button>
-            <button>
-              <ArtistMoreOptionIcon />
-            </button>
           </div>
-        </div>
-        {/* content */}
-        <div className="px-[32px] ">
-          {/* -------- popular song (Track) -------- */}
-          <section className="mb-[40px]">
-            <h2 className="text-2xl leading-loose"> Popular </h2>
-            <div>
-              <Track index={1} />
-              <Track index={2} />
-              <Track index={3} />
-              <Track index={4} />
-              <Track index={5} />
-            </div>
-            <div>
-              <button className="p-4 text-sm opacity-80 hover:opacity-100"> See more </button>
-            </div>
-          </section>
+          {/* content */}
+          <div className="px-[32px] ">
+            {/* -------- popular song (Track) -------- */}
+            <section className="mb-[40px]">
+              <h2 className="text-2xl leading-loose"> Popular </h2>
+              <div>
+                <Track index={1} />
+                <Track index={2} />
+                <Track index={3} />
+                <Track index={4} />
+                <Track index={5} />
+              </div>
+              <div>
+                <button className="p-4 text-sm opacity-80 hover:opacity-100"> See more </button>
+              </div>
+            </section>
 
-          {/* -------- Discography -------- */}
-          <Discography />
-          <Featuring />
-          <FansAlsoLike />
-          <AppearsOn />
-          <DiscoveredOn />
-          <About />
-        </div>
-      </section>
+            {/* -------- Discography -------- */}
+            <Discography />
+            <Featuring />
+            <FansAlsoLike />
+            <AppearsOn />
+            <DiscoveredOn />
+            <About />
+          </div>
+        </section>
+      </div>
     </Page>
   );
 }
 
 const Profile = () => {
   return (
-    <div className="h-[40vh] min-h-[340px] flex items-end px-[32px] py-[24px]">
+    <div className="min-h-[340px] flex items-end px-[32px] pb-[24px]">
       <div className="flex flex-col">
         {/* --------- */}
         <div className="flex items-center gap-3">
@@ -362,7 +363,7 @@ const About = () => {
         <h2 className="text-2xl leading-loose grow">About</h2>
       </div>
       <div className="">
-        <button className="w-full max-w-[840px] bg-black-2 rounded-lg text-start hover:scale-[101%] transition-all">
+        <button className="relative isolate w-full max-w-[840px] bg-black-2 rounded-lg text-start hover:scale-[100.5%] transition-all">
           <div className="max-w-[680px] flex flex-col p-[40px]">
             {/* image */}
             <figure className="mb-6">
@@ -394,6 +395,10 @@ const About = () => {
               Child Development, Govt. of India. Kaushiki has performed Paris, Germany, Hawaii, Budapest, Scotland,
               Kenya, Japan, Dubai, Muscat, USA and many more.
             </div>
+          </div>
+          <div className="absolute top-[40px] right-[40px] w-[80px] h-[80px] flex flex-col justify-center items-center rounded-full bg-blue-600">
+            <span className="text-2xl"> #133 </span>
+            <span className="text-[11px]"> in the world </span>
           </div>
         </button>
       </div>

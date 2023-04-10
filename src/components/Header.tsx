@@ -9,7 +9,7 @@ type props = {
 
 function Header({children} : props) {
   return (
-    <header className="px-8 py-4 flex gap-4 bg-black-2">
+    <header className="sticky h-[64px] top-0 w-full z-50 px-8 py-4 flex gap-4 items-center bg-black-2/90">
       {/* chevron */}
       <div className="flex items-center gap-4">
         <button className="h-[32px] w-[32px] flex items-center justify-center bg-black shrink-0 rounded-full">
