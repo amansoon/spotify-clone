@@ -21,7 +21,7 @@ function Search() {
       <Tabs />
 
       <div className="px-8">
-        <div className="grid grid-cols-6 gap-x-6 gap-y-8 mt-4">
+        <div className="grid grid-cols-6 max-w-[1500px]:grid-cols-5 gap-x-6 gap-y-8 mt-4">
           <TopResult />
           <Songs />
           <Featuring />
