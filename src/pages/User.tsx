@@ -20,26 +20,29 @@ function User({}: Props) {
   return (
     <Page>
       <Header />
-      <Profile />
 
-      <div className="flex px-[32px] py-[24px]">
-        <button className="mr-[24px]">
-          <MenuIcon />
-        </button>
+      <div className="-mt-[64px]">
+        <Profile />
+
+        <div className="flex px-[32px] py-[24px]">
+          <button className="mr-[24px]">
+            <MenuIcon />
+          </button>
+        </div>
+
+        <TopArtists />
+        <TopTracks />
+        <PublicPlaylist />
+
+        <Following />
       </div>
-
-      <TopArtists />
-      <TopTracks />
-      <PublicPlaylist />
-
-      <Following />
     </Page>
   );
 }
 
 const Profile = () => {
   return (
-    <div className="flex items-end px-[32px] py-[32px] bg-black-2">
+    <div className="min-h-[340px] flex items-end px-8 pb-6 bg-black-2">
       {/* photo */}
       <div className="w-[232px] min-w-[232px] h-[232px] mr-6">
         <div className="relative w-full h-full rounded-full bg-black-1 shadow-lg">
